@@ -39,7 +39,6 @@ $PAGE->set_title($title);
 $PAGE->set_heading($title);
 
 $OUTPUT->header();
-$OUTPUT->heading($pagetitle);
 
 echo "What";
 html_writer::div(print_string('hello', 'tool_claytondarl', 0));
