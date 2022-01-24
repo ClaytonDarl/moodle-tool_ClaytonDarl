@@ -25,11 +25,22 @@
 defined('MOODLE_INTERNAL') || die();
 
 require_once(__DIR__ . '/../../../config.php');
+require_once($CFG->libdir.'/adminlib.php');
+
+admin_externalpage_setup('toolclaytondarl');
+
+$title = get_string('pluginname', 'tool_claytondarl');
+$pagetitle = $title;
 $url = new moodle_url('/admin/tool/claytondarl/index.php');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_url($url);
+$PAGE->set_url($url, array('id' => 0));
 $PAGE->set_pagelayout('report');
-$PAGE->set_title('Hello to the todo list');
-$PAGE->set_heading(get_string('pluginname', 'tool_ClaytonDarl'));
+$PAGE->set_title($title);
+$PAGE->set_heading($title);
 
-echo "Hello world!";
+$OUTPUT->header();
+$OUTPUT->heading($pagetitle);
+
+html_writer::div(print_string('hello', 'tool_claytondarl', 0));
+
+$OUTPUT->footer();
