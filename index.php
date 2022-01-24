@@ -32,4 +32,4 @@ $PAGE->set_pagelayout('report');
 $PAGE->set_title('Hello to the todo list');
 $PAGE->set_heading(get_string('pluginname', 'tool_ClaytonDarl'));
 
-echo "Hello world";
+echo "Hello world!";
