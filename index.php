@@ -37,9 +37,9 @@ $PAGE->set_url($url);
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 
-$OUTPUT->header();
+echo $OUTPUT->header();
 
 echo "What";
-html_writer::div(print_string('hello', 'tool_claytondarl', 0));
+echo html_writer::div(print_string('hello', 'tool_claytondarl', 0));
 
-$OUTPUT->footer();
+echo $OUTPUT->footer();
