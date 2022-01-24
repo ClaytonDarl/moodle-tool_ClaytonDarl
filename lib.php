@@ -21,24 +21,16 @@
  * @copyright 2022 Clayton Darlington
  * @license MIT
  */
-require_once(__DIR__ . '/../../../config.php');
 
-//defined('MOODLE_INTERNAL') || die(); //This is casuing my issue! Makes it so a page is only accessible from an internal moodle link
-
-require_once($CFG->libdir.'/adminlib.php');
-
-//admin_externalpage_setup('tool_claytondarl'); --This will also cause an issue I need to look into adding this as an ADMIN
-require_login();
-
-$url = new moodle_url('/admin/tool/claytondarl/index.php');
-$PAGE->set_context(context_system::instance());
-$PAGE->set_url($url);
-$PAGE->set_pagelayout('report');
-$PAGE->set_title('Hello to claytondarl');
-$PAGE->set_heading(get_string('pluginname', 'tool_claytondarl'));
-
-echo $OUTPUT->header();
-
-echo "Hello World!";
-
-echo $OUTPUT->footer();
+ //Extend the settings navigation to include a link to our plugin
+ function tool_claytondarl_extend_navigation_course($navigation, $course, $context) {
+     //Add a new node to the navigation tree
+    $navigation->add(
+        get_string('pluginname', 'tool_claytondarl'), //Gets the name of the plugin
+        new moodle_url('/admin/tool/claytondarl/index.php'), //creates the url with the user id parameter
+        navigation_node::TYPE_SETTING, //sets the nodes type
+        get_string('pluginname', 'tool_claytondarl'), //
+        'claytondarl',
+        new pix_icon('icon', '', 'tool_claytondarl')
+    );
+ }
