@@ -33,8 +33,7 @@ $title = get_string('pluginname', 'tool_claytondarl');
 $pagetitle = $title;
 $url = new moodle_url('/admin/tool/claytondarl/index.php');
 $PAGE->set_context(context_system::instance());
-$PAGE->set_url($url, array('id' => 0));
-$PAGE->set_pagelayout('report');
+$PAGE->set_url($url);
 $PAGE->set_title($title);
 $PAGE->set_heading($title);
 
