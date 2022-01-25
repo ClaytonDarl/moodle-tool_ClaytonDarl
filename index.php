@@ -29,6 +29,7 @@ require_once($CFG->libdir.'/adminlib.php');
 
 //admin_externalpage_setup('tool_claytondarl'); --This will also cause an issue I need to look into adding this as an ADMIN
 require_login();
+global $DB;
 
 $url = new moodle_url('/admin/tool/claytondarl/index.php');
 $PAGE->set_context(context_system::instance());
@@ -40,5 +41,9 @@ $PAGE->set_heading(get_string('pluginname', 'tool_claytondarl'));
 echo $OUTPUT->header();
 
 echo "Hello World!";
+$table = 'user';
+$res = $DB->get_records($table, ['id' => '1']);
+
+echo var_dump($res);
 
 echo $OUTPUT->footer();
