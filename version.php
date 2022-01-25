@@ -22,7 +22,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2021012410;
+$plugin->version = 2021012411;
 $plugin->requires = 2021051100;
 $plugin->component = 'tool_claytondarl';
-$plugin->release = '1.10';
+$plugin->release = '1.11';

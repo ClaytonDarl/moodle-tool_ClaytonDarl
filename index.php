@@ -22,11 +22,10 @@
  * @license MIT
  */
 require_once(__DIR__ . '/../../../config.php');
-
 //defined('MOODLE_INTERNAL') || die(); //This is casuing my issue! Makes it so a page is only accessible from an internal moodle link
-
 require_once($CFG->libdir.'/adminlib.php');
-
+require_once("classes/claytondarl_table.php");
+require_once($CFG->libdir.'/tablelib.php');
 //admin_externalpage_setup('tool_claytondarl'); --This will also cause an issue I need to look into adding this as an ADMIN
 require_login();
 global $DB;
@@ -38,12 +37,23 @@ $PAGE->set_pagelayout('report');
 $PAGE->set_title('Hello to claytondarl');
 $PAGE->set_heading(get_string('pluginname', 'tool_claytondarl'));
 
-echo $OUTPUT->header();
+$download = optional_param('download', '', PARAM_ALPHA);
 
-echo "Hello World!";
-$table = 'user';
-$res = $DB->get_records($table, ['id' => '1']);
+$table = new tool_claytondarl_table('1');
 
-echo var_dump($res);
+if (!$table->is_downloading()) {
+    //Only print the headers if not downloading
+    //Print page header
+    $PAGE->set_title("Testing table");
+    $PAGE->set_heading("Testing table");
+    $PAGE->navbar->add("Testing table");
+    echo $OUTPUT->header();
+}
 
-echo $OUTPUT->footer();
+$table->set_sql('*', "{tool_claytondarl}", '1=1');
+$table->define_baseurl($url);
+$table->out(10, true);
+
+if(!$table->is_downloading()) {
+    echo $OUTPUT->footer();
+}
