@@ -8,11 +8,11 @@ class tool_claytondarl_table extends table_sql {
     {
         parent::__construct($uniqueid);
         //Define the list of columns to show
-        $columns = array('id','courseid','completed','priority','timecreated','timemodified', 'name', 'delete');
+        $columns = array('id','courseid','completed','priority','timecreated','timemodified','name','description','delete');
         $this->define_columns($columns);
 
         //Define the titles of columns to show in headers
-        $headers = array('Id', 'Course Id', 'Completed', 'Priority', 'Time Created', 'Time Modified', 'name', 'delete');
+        $headers = array('Id', 'Course Id', 'Completed', 'Priority', 'Time Created', 'Time Modified','name', 'description','delete');
         $this->define_headers($headers);
     }
 

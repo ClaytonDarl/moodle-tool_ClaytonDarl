@@ -50,7 +50,11 @@ if (!$table->is_downloading()) {
     echo $OUTPUT->header();
 }
 
-echo html_writer::div('<a href="edit.php"> Add a new record </a>');
+//This is to have a record inserted. I need to figure out what is going on with my form
+//$data = array('courseid' => 1, 'completed' => 1, 'priority' => 1, 'timecreated' => 12, 'name' => 'Tester');
+//$DB->insert_record('tool_claytondarl', $data);
+
+echo html_writer::div('<a href="add.php"> Add a new record </a>');
 
 $table->set_sql('*', "{tool_claytondarl}", '1=1');
 $table->define_baseurl($url);
