@@ -6,3 +6,4 @@ $string['pluginname'] = "claytondarl";
 //$string['hello'] = 'Hello world! {$a}';
 $string['yes'] = "yes";
 $string['no'] = "no";
+$string['editentrytitle'] = 'Edit entry {$a}';

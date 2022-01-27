@@ -8,12 +8,16 @@ class tool_claytondarl_table extends table_sql {
     {
         parent::__construct($uniqueid);
         //Define the list of columns to show
-        $columns = array('id','courseid','completed','priority','timecreated','timemodified');
+        $columns = array('id','courseid','completed','priority','timecreated','timemodified', 'name', 'delete');
         $this->define_columns($columns);
 
         //Define the titles of columns to show in headers
-        $headers = array('Id', 'Course Id', 'Completed', 'Priority', 'Time Created', 'Time Modified');
+        $headers = array('Id', 'Course Id', 'Completed', 'Priority', 'Time Created', 'Time Modified', 'name', 'delete');
         $this->define_headers($headers);
+    }
+
+    protected function col_name($values) {
+        return format_string($values->name);
     }
 
     //Format the completed column
@@ -26,12 +30,22 @@ class tool_claytondarl_table extends table_sql {
         }
     }
 
+    function col_id($values) {
+        $url = new moodle_url('/admin/tool/claytondarl/edit.php', array('id' => $values->id));
+        return '<a href="'. $url->out(true) . '">' . $values->id . '</a>';
+    }
+
     function col_timecreated($values) {
         return userdate($values->timecreated);
     }
 
     function col_timemodified($values) {
         return userdate($values->timemodified);
+    }
+
+    function col_delete($values) {
+        $url = new moodle_url('/admin/tool/claytondarl/delete.php', array('id' => $values->id));
+        return '<a href="'. $url->out(true) . '"> DELETE </a>';;
     }
 
 }

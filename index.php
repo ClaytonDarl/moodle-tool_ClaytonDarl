@@ -30,7 +30,7 @@ require_once($CFG->libdir.'/tablelib.php');
 require_login();
 global $DB;
 
-$url = new moodle_url('/admin/tool/claytondarl/index.php');
+$url = new moodle_url('/admin/tool/claytondarl/index.php', array());
 $PAGE->set_context(context_system::instance());
 $PAGE->set_url($url);
 $PAGE->set_pagelayout('report');
@@ -49,6 +49,8 @@ if (!$table->is_downloading()) {
     $PAGE->navbar->add("Testing table");
     echo $OUTPUT->header();
 }
+
+echo html_writer::div('<a href="edit.php"> Add a new record </a>');
 
 $table->set_sql('*', "{tool_claytondarl}", '1=1');
 $table->define_baseurl($url);

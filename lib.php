@@ -24,13 +24,20 @@
 
  //Extend the settings navigation to include a link to our plugin
  function tool_claytondarl_extend_navigation_course($navigation, $course, $context) {
-     //Add a new node to the navigation tree
-    $navigation->add(
-        get_string('pluginname', 'tool_claytondarl'), //Gets the name of the plugin
-        new moodle_url('/admin/tool/claytondarl/index.php'), //creates the url with the user id parameter
-        navigation_node::TYPE_SETTING, //sets the nodes type
-        get_string('pluginname', 'tool_claytondarl'), //
-        'claytondarl',
-        new pix_icon('icon', '', 'tool_claytondarl')
-    );
+     if(has_capability('tool/claytondarl:view', $context)) {
+        //Add a new node to the navigation tree
+        $navigation->add(
+            get_string('pluginname', 'tool_claytondarl'), //Gets the name of the plugin
+            new moodle_url('/admin/tool/claytondarl/index.php', array('id' => $course->id)), //creates the url with the user id parameter
+            navigation_node::TYPE_SETTING, //sets the nodes type
+            get_string('pluginname', 'tool_claytondarl'), //
+            'claytondarl',
+            new pix_icon('icon', '', 'tool_claytondarl')
+        );
+     }
+
+ }
+
+ function adder($x, $y) {
+     return ($x + $y);
  }
