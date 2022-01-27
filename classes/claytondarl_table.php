@@ -12,7 +12,7 @@ class tool_claytondarl_table extends table_sql {
         $this->define_columns($columns);
 
         //Define the titles of columns to show in headers
-        $headers = array('Id', 'Course Id', 'Completed', 'Priority', 'Time Created', 'Time Modified','name', 'description','delete');
+        $headers = array('Id', 'Course Id', 'Completed', 'Priority', 'Time Created', 'Time Modified','Name','Description','delete');
         $this->define_headers($headers);
     }
 

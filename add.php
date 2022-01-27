@@ -39,6 +39,7 @@ if (!has_capability('tool/claytondarl:edit', $PAGE->context)) {
     redirect($redirect);
 }
 
+echo $OUTPUT->header();
 //create the add form will redirect to index.php
 $mform = new tool_claytondarl_add_form($redirect);
 
@@ -50,9 +51,10 @@ else if ($data = $mform->get_data()) //get the form data and then do stuff
 {
     $DB->insert_record('tool_claytondarl', $data);
 }
+else  //This runs if data is validated and should redisplay the form or on the first display of the form
+{
+    $mform->display();
+}
 
-echo $OUTPUT->header();
-
-$mform->display();
 
 echo $OUTPUT->footer();

@@ -17,6 +17,10 @@ class tool_claytondarl_add_form extends moodleform {
         $mform->setType('completed', PARAM_INT);
         $mform->setDefault('completed', 0);
 
+        //file upload
+        $mform->addElement('static', 'filemanagerinfo', "Instead of pasting the code, you can choose 'file format and attach a file below'");
+        $mform->addElement('filemanager', 'attachment_filemanager', "Upload file here");
+
         //hidden course id
         $mform->addElement('hidden', 'courseid', 1);
         $mform->setType('courseid', PARAM_INT);
